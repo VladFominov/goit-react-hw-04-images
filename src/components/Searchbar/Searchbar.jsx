@@ -2,9 +2,7 @@ import React, { useState} from 'react';
 import PropTypes from 'prop-types';
 
 import { Searchbar } from './Searchbar.styled';
-// state = {
-//     imageName: '',
-//   };
+
 export const SearchbarForm = ({onSelectImage}) => {
   
   const [imageName, setImageName] = useState('');
@@ -25,8 +23,8 @@ export const SearchbarForm = ({onSelectImage}) => {
     e.preventDefault();
     setImageName('');
     if (!imageName.length) return;
-  onSelectImage(imageName);
-    // setImageName(() => onSelectImage);
+    onSelectImage(imageName);
+    
   };
 
     return (

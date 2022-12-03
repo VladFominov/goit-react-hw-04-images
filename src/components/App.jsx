@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-// import CircularProgress from '@mui/material/CircularProgress';
+
 import Spinner from 'react-bootstrap/Spinner';
 import { SearchbarForm } from './Searchbar/Searchbar';
 import { getImages } from './Services/api';
@@ -29,7 +29,7 @@ export const App = () => {
              console.log(error)
            })
            .finally(() => {
-             setIsLoading({ isLoading: false });
+             setIsLoading(isLoading);
            });
      }
      // eslint-disable-next-line
@@ -42,11 +42,7 @@ export const App = () => {
     const onSelectImage = imageName => {
       setImageName( imageName, images, page );
   };
-
-  // loadMore = () => {
-  //   this.setState(prevState => ({ page: prevState.page + 1 }));
-  // };
-   
+  
     const loadMore = () => {
     setPage(prevState => (prevState + 1 ));
   };
@@ -60,8 +56,8 @@ export const App = () => {
         }}
       >
         <SearchbarForm onSelectImage={onSelectImage} />
-        <Spinner animation="border" variant="success" />
-        {/* {isLoading && <CircularProgress color="success" />} */}
+
+       {isLoading && <Spinner animation="border" variant="success" />} 
 
         <ImageGalleryList images={images} />
 
